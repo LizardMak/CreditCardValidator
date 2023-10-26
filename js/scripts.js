@@ -1,6 +1,8 @@
-window.addEventListener("load",function() {
+//Business
+
+window.addEventListener("load", function () {
   document.getElementById("creditCard").addEventListener("submit", cardInitializer)
-} );
+});
 
 function checkCardType(cardNumber) {
   const cardNumberString = cardNumber.toString();
@@ -16,7 +18,7 @@ function checkCardType(cardNumber) {
     } else {
       return "invalid card"
     }
-  } else if (cardNumberString.charAt(0)=== "5") {
+  } else if (cardNumberString.charAt(0) === "5") {
     if (cardNumberString.length === 16) {
       return "Mastercard"
     } else {
@@ -36,35 +38,35 @@ function checkCardType(cardNumber) {
 function checkCardDigits(cardNumber) {
   const cardNumberString = cardNumber.toString();
   let newArray = [];
-  for (let index = 0; index<=cardNumberString.length -1; index += 1) {
+  for (let index = 0; index <= cardNumberString.length - 1; index += 1) {
     let overDigits = ""
     if (index === 1 || index === 3 || index === 5 || index === 7 || index === 9 || index === 11 || index === 13 || index === 15) {
-    if (parseInt(cardNumberString.charAt(index)) * 2 > 9) {
-      let digitConvert = (parseInt(cardNumberString.charAt(index))) * 2;
-      let digitConvert2 = digitConvert.toString();
-      overDigits = digitConvert2;
-      let overDigitNum1 = parseInt(overDigits.charAt(0));
-      let overDigitNum2 = parseInt(overDigits.charAt(1));
-      newArray.push(overDigitNum1 + overDigitNum2)
+      if (parseInt(cardNumberString.charAt(index)) * 2 > 9) {
+        let digitConvert = (parseInt(cardNumberString.charAt(index))) * 2;
+        let digitConvert2 = digitConvert.toString();
+        overDigits = digitConvert2;
+        let overDigitNum1 = parseInt(overDigits.charAt(0));
+        let overDigitNum2 = parseInt(overDigits.charAt(1));
+        newArray.push(overDigitNum1 + overDigitNum2)
 
-    } else {
-      newArray.push(parseInt(cardNumberString.charAt(index)) * 2)
-    }
+      } else {
+        newArray.push(parseInt(cardNumberString.charAt(index)) * 2)
+      }
     } else {
       newArray.push(parseInt(cardNumberString.charAt(index)))
     }
   }
- return newArray;
+  return newArray;
 }
 
 function checkCardMath(checkedCardDigits) {
   sum = 0;
-  checkedCardDigits.forEach(function(digit) {
-  let parsedNum = parseInt(digit);
-  sum = sum + parsedNum;
+  checkedCardDigits.forEach(function (digit) {
+    let parsedNum = parseInt(digit);
+    sum = sum + parsedNum;
   });
   const sumString = sum.toString();
-  if (sumString.charAt(sumString.length -1) === "0") {
+  if (sumString.charAt(sumString.length - 1) === "0") {
     return "valid"
   } else {
     return "invalid card"
@@ -72,7 +74,9 @@ function checkCardMath(checkedCardDigits) {
 
 }
 
-function cardInitializer (e) {
+//UI
+
+function cardInitializer(e) {
   e.preventDefault();
   let cardNumber = document.getElementById("insertCard").value;
   let checkedCardType = checkCardType(cardNumber);
