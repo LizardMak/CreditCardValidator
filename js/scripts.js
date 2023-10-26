@@ -85,4 +85,4 @@ function cardInitializer (e) {
     document.getElementById("results").className = "invalid"
     document.getElementById("results").innerText = "Card invalid!"
   }
-  }
+  //
