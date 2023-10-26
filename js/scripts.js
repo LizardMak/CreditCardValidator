@@ -74,7 +74,7 @@ function checkCardMath(checkedCardDigits) {
 
 }
 
-//UI
+//U
 
 function cardInitializer(e) {
   e.preventDefault();
